@@ -7,6 +7,11 @@ class AppScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: appPrimaryColor,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: appPrimaryAccentColor,
+        child: Icon(Icons.note_add_outlined),
+        onPressed: () {},
+      ),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Column(
