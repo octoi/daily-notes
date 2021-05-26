@@ -1,3 +1,4 @@
+import 'package:app/screens/app_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,7 +10,7 @@ class DailyNotes extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(),
+      home: AppScreen(),
     );
   }
 }
