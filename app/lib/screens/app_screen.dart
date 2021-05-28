@@ -45,7 +45,10 @@ class AppScreen extends StatelessWidget {
             body: TabBarView(
               physics: BouncingScrollPhysics(),
               children: [
-                AllScreen(),
+                Container(
+                  child: AllScreen(),
+                  margin: EdgeInsets.all(15.0),
+                ),
                 FolderScreen(),
               ],
             ),
