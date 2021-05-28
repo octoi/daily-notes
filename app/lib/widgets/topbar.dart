@@ -1,48 +1,42 @@
 import 'package:app/utils/constants.dart';
 import 'package:flutter/material.dart';
 
-class Topbar extends StatelessWidget {
+class Topbar extends StatelessWidget implements PreferredSizeWidget {
+  @override
+  Size get preferredSize => const Size.fromHeight(100);
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return AppBar(
+      title: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                "n",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 25.0,
-                ),
-              ),
-              Text(
-                "otes",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20.0,
-                ),
-              ),
-            ],
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 5.0),
-            child: IconButton(
-              icon: Icon(Icons.settings),
-              onPressed: () {},
-              color: Colors.white38,
-              iconSize: 20.0,
-              splashColor: appSecondaryColor,
-              highlightColor: appSecondaryColor,
-              splashRadius: 20.0,
+          Text(
+            "n",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 25.0,
             ),
-          )
+          ),
+          Text(
+            "otes",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20.0,
+            ),
+          ),
         ],
       ),
+      bottom: TabBar(
+        indicatorColor: appSecondaryAccentColor,
+        indicatorSize: TabBarIndicatorSize.label,
+        tabs: [
+          Tab(text: "All"),
+          Tab(text: "Folder"),
+        ],
+      ),
+      backgroundColor: appPrimaryColor,
+      elevation: 0.0,
     );
   }
 }
