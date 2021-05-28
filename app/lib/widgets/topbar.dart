@@ -28,9 +28,11 @@ class Topbar extends StatelessWidget implements PreferredSizeWidget {
         ],
       ),
       bottom: TabBar(
+        indicatorColor: appSecondaryAccentColor,
+        indicatorSize: TabBarIndicatorSize.label,
         tabs: [
-          Tab(icon: Icon(Icons.directions_car)),
-          Tab(icon: Icon(Icons.directions_transit)),
+          Tab(text: "All"),
+          Tab(text: "Folder"),
         ],
       ),
       backgroundColor: appPrimaryColor,
