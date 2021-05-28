@@ -1,4 +1,6 @@
 import 'package:app/bloc/tab_bloc.dart';
+import 'package:app/screens/all_screen.dart';
+import 'package:app/screens/folder_screen.dart';
 import 'package:app/utils/constants.dart';
 import 'package:app/widgets/topbar.dart';
 import 'package:flutter/material.dart';
@@ -43,8 +45,8 @@ class AppScreen extends StatelessWidget {
             body: TabBarView(
               physics: BouncingScrollPhysics(),
               children: [
-                Text("All"),
-                Text("Folders"),
+                AllScreen(),
+                FolderScreen(),
               ],
             ),
           );
