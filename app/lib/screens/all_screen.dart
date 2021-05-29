@@ -34,7 +34,6 @@ class Note extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(15.0),
-      // margin: EdgeInsets.all(5.0),
       width: double.infinity,
       decoration: BoxDecoration(
         color: appSecondaryColor,
