@@ -4,34 +4,46 @@ import 'package:flutter/material.dart';
 class FolderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return GridView.count(
       physics: BouncingScrollPhysics(),
+      crossAxisCount: 2,
+      crossAxisSpacing: 8.0,
+      mainAxisSpacing: 8.0,
+      children: [
+        Folder(),
+        Folder(),
+        Folder(),
+        Folder(),
+        Folder(),
+      ],
+    );
+  }
+}
+
+class Folder extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(15.0),
+      decoration: BoxDecoration(
+        color: appSecondaryColor,
+        borderRadius: BorderRadius.circular(10.0),
+      ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Container(
-            width: double.infinity,
-            height: 200.0,
-            color: appSecondaryColor,
-            margin: EdgeInsets.all(10.0),
+          Icon(
+            Icons.folder_rounded,
+            size: 80.0,
+            color: appSecondaryAccentColor,
           ),
-          Container(
-            width: double.infinity,
-            height: 200.0,
-            color: appSecondaryColor,
-            margin: EdgeInsets.all(10.0),
-          ),
-          Container(
-            width: double.infinity,
-            height: 200.0,
-            color: appSecondaryColor,
-            margin: EdgeInsets.all(10.0),
-          ),
-          Container(
-            width: double.infinity,
-            height: 200.0,
-            color: appSecondaryColor,
-            margin: EdgeInsets.all(10.0),
-          ),
+          Text(
+            "Folder Name",
+            style: TextStyle(
+              color: Colors.grey,
+            ),
+            overflow: TextOverflow.ellipsis,
+          )
         ],
       ),
     );

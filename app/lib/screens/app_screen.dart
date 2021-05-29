@@ -49,7 +49,10 @@ class AppScreen extends StatelessWidget {
                   child: AllScreen(),
                   margin: EdgeInsets.all(15.0),
                 ),
-                FolderScreen(),
+                Container(
+                  child: FolderScreen(),
+                  margin: EdgeInsets.all(15.0),
+                ),
               ],
             ),
           );
