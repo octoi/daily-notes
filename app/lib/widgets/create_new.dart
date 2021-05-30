@@ -10,8 +10,8 @@ Future<void> alertForm(context, isFolderScreen) async {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: const Text(
-          'New document',
+        title: Text(
+          isFolderScreen ? 'New Folder' : 'New document',
           style: whiteColorText,
         ),
         backgroundColor: appSecondaryColor,
@@ -23,7 +23,9 @@ Future<void> alertForm(context, isFolderScreen) async {
                   _value = val;
                   _alertInputBloc.alertInputSink.add(_value);
                 },
-                decoration: inputDecoration.copyWith(labelText: "sample"),
+                decoration: inputDecoration.copyWith(
+                  labelText: isFolderScreen ? 'folder name' : 'document name',
+                ),
                 style: whiteColorText,
               )
             ],
