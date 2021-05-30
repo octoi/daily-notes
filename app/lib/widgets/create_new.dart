@@ -1,38 +1,30 @@
+import 'package:app/bloc/alert_input_bloc.dart';
 import 'package:app/utils/constants.dart';
 import 'package:flutter/material.dart';
 
-Future<void> _showMyDialog(context) async {
+Future<void> alertForm(context, isFolderScreen) async {
+  final _alertInputBloc = AlertInputBloc();
+  String _value = "";
+
   return showDialog<void>(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
         title: const Text(
           'New document',
-          style: TextStyle(
-            color: Colors.white,
-          ),
+          style: whiteColorText,
         ),
         backgroundColor: appSecondaryColor,
         content: SingleChildScrollView(
           child: ListBody(
-            children: const <Widget>[
+            children: <Widget>[
               TextField(
-                decoration: InputDecoration(
-                  labelText: "document name",
-                  labelStyle: TextStyle(color: Colors.white30),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: appPrimaryAccentColor,
-                      width: 0.5,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: appPrimaryAccentColor,
-                      width: 1.5,
-                    ),
-                  ),
-                ),
+                onChanged: (val) {
+                  _value = val;
+                  _alertInputBloc.alertInputSink.add(_value);
+                },
+                decoration: inputDecoration.copyWith(labelText: "sample"),
+                style: whiteColorText,
               )
             ],
           ),
@@ -45,19 +37,22 @@ Future<void> _showMyDialog(context) async {
             color: appPrimaryColor,
             textColor: Colors.white,
           ),
-          RaisedButton(
-            onPressed: () {},
-            child: Text("create"),
-            highlightColor: appSecondaryColor,
-            color: appPrimaryAccentColor,
-            textColor: Colors.white,
+          StreamBuilder(
+            stream: _alertInputBloc.alertInputStream,
+            builder: (context, snapshot) {
+              return RaisedButton(
+                child: Text("create"),
+                highlightColor: appSecondaryColor,
+                color: appPrimaryAccentColor,
+                textColor: Colors.white,
+                disabledColor: appPrimaryColor,
+                disabledTextColor: Colors.white30,
+                onPressed: _value.isEmpty ? null : () {},
+              );
+            },
           ),
         ],
       );
     },
   );
-}
-
-void createThing(context, isFolderScreen) {
-  _showMyDialog(context);
 }
