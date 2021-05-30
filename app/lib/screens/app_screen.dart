@@ -14,6 +14,7 @@ class AppScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
+      initialIndex: 0,
       child: Builder(
         builder: (BuildContext context) {
           final TabController _tabController =
