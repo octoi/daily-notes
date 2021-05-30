@@ -2,6 +2,7 @@ import 'package:app/bloc/tab_bloc.dart';
 import 'package:app/screens/all_screen.dart';
 import 'package:app/screens/folder_screen.dart';
 import 'package:app/utils/constants.dart';
+import 'package:app/widgets/create_new.dart';
 import 'package:app/widgets/topbar.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,7 @@ class AppScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
+      initialIndex: 0,
       child: Builder(
         builder: (BuildContext context) {
           final TabController _tabController =
@@ -38,7 +40,9 @@ class AppScreen extends StatelessWidget {
                         ? Icons.create_new_folder_outlined
                         : Icons.note_add_outlined,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    alertForm(context, _isFolderScreen);
+                  },
                 );
               },
             ),
