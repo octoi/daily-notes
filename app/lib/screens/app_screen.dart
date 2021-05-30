@@ -41,7 +41,7 @@ class AppScreen extends StatelessWidget {
                         : Icons.note_add_outlined,
                   ),
                   onPressed: () {
-                    createThing(context, _isFolderScreen);
+                    alertForm(context, _isFolderScreen);
                   },
                 );
               },
