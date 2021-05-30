@@ -6,6 +6,9 @@ Future<void> alertForm(context, isFolderScreen) async {
   final _alertInputBloc = AlertInputBloc();
   String _value = "";
 
+  createFolder() {}
+  createDocument() {}
+
   return showDialog<void>(
     context: context,
     builder: (BuildContext context) {
@@ -49,7 +52,9 @@ Future<void> alertForm(context, isFolderScreen) async {
                 textColor: Colors.white,
                 disabledColor: appPrimaryColor,
                 disabledTextColor: Colors.white30,
-                onPressed: _value.isEmpty ? null : () {},
+                onPressed: _value.isEmpty
+                    ? null
+                    : () => isFolderScreen ? createFolder() : createDocument(),
               );
             },
           ),
