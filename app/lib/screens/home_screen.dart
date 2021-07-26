@@ -1,4 +1,5 @@
 import 'package:app/utils/contants.dart';
+import 'package:app/widgets/app_tab_bar_view.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -31,11 +32,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         body: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [],
-            ),
-          ),
+          child: AppTabBarView(),
         ),
       ),
     );
