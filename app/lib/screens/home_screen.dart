@@ -6,23 +6,35 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: appSecondaryColor,
-      appBar: AppBar(
-        backgroundColor: appPrimaryColor,
-        elevation: 0.0,
-        title: Text(
-          'Notes',
-          style: TextStyle(
-            color: Colors.white.withOpacity(0.8),
-            fontWeight: FontWeight.normal,
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        backgroundColor: appSecondaryColor,
+        appBar: AppBar(
+          backgroundColor: appPrimaryColor,
+          elevation: 0.0,
+          title: Text(
+            'Notes',
+            style: TextStyle(
+              color: appWhite,
+              fontWeight: FontWeight.normal,
+            ),
+          ),
+          bottom: TabBar(
+            indicatorColor: appPrimaryAccentColor,
+            unselectedLabelColor: appWhite,
+            labelColor: appPrimaryAccentColor,
+            tabs: [
+              Tab(icon: Icon(Icons.edit_outlined)),
+              Tab(icon: Icon(Icons.visibility_outlined)),
+            ],
           ),
         ),
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [],
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [],
+            ),
           ),
         ),
       ),
