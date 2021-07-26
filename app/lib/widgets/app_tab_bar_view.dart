@@ -10,7 +10,7 @@ class AppTabBarView extends StatefulWidget {
 }
 
 class _AppTabBarViewState extends State<AppTabBarView> {
-  String markdown = '# Nothing to render 🤷‍♂️';
+  String markdown = '';
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +35,6 @@ class _AppTabBarViewState extends State<AppTabBarView> {
                     hintStyle: TextStyle(color: appWhite),
                   ),
                   onChanged: (String inputVal) {
-                    inputVal = inputVal.length == 0
-                        ? '# Nothing to render 🤷‍♂️'
-                        : inputVal;
                     setState(() => markdown = inputVal);
                   },
                 ),
@@ -49,9 +46,11 @@ class _AppTabBarViewState extends State<AppTabBarView> {
           child: Container(
             margin: EdgeInsets.all(20.0),
             child: MarkdownBody(
-              data: markdown,
+              data:
+                  markdown.length == 0 ? '# Nothing to render 🤷‍♂️' : markdown,
               selectable: true,
               styleSheetTheme: MarkdownStyleSheetBaseTheme.cupertino,
+              styleSheet: MarkdownStyleSheet.fromTheme(Theme.of(context)),
             ),
           ),
         ),
