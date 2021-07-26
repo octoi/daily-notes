@@ -13,7 +13,9 @@ class HomeScreen extends StatelessWidget {
         child: SingleChildScrollView(
           padding: EdgeInsets.all(10.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // add button
               Material(
                 color: appSecondaryColor,
                 borderRadius: BorderRadius.circular(10.0),
@@ -29,6 +31,20 @@ class HomeScreen extends StatelessWidget {
                       color: appPrimaryAccentColor,
                       size: 50.0,
                     ),
+                  ),
+                ),
+              ),
+              // recent notes
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 20.0,
+                  horizontal: 5.0,
+                ),
+                child: Text(
+                  "Recent Notes",
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.8),
+                    fontSize: 18.0,
                   ),
                 ),
               ),
