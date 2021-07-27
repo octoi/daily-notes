@@ -1,3 +1,4 @@
+import 'package:app/screens/edit_screen.dart';
 import 'package:app/utils/contants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,13 @@ class NewDocumentButton extends StatelessWidget {
       child: InkWell(
         splashColor: appSecondaryColor,
         highlightColor: appPrimaryColor.withOpacity(0.5),
-        onTap: () {},
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (BuildContext context) {
+              return EditScreen(title: 'Untitled');
+            },
+          ));
+        },
         child: Container(
           width: double.infinity,
           padding: EdgeInsets.symmetric(vertical: 60.0),
