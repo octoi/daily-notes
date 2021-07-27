@@ -3,7 +3,9 @@ import 'package:app/widgets/app_tab_bar_view.dart';
 import 'package:flutter/material.dart';
 
 class EditScreen extends StatelessWidget {
-  const EditScreen({Key? key}) : super(key: key);
+  final String title;
+
+  const EditScreen({Key? key, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,7 @@ class EditScreen extends StatelessWidget {
           backgroundColor: appPrimaryColor,
           elevation: 0.0,
           title: Text(
-            'Notes',
+            title,
             style: TextStyle(
               color: appWhite,
               fontWeight: FontWeight.normal,
