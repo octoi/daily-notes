@@ -1,4 +1,5 @@
 import 'package:app/utils/contants.dart';
+import 'package:app/utils/save_file.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
@@ -12,6 +13,10 @@ class AppTabBarView extends StatefulWidget {
 class _AppTabBarViewState extends State<AppTabBarView> {
   String markdown = '';
 
+  void saveMardown() async {
+    await saveFile("sample", markdown);
+  }
+
   @override
   Widget build(BuildContext context) {
     return TabBarView(
@@ -19,6 +24,7 @@ class _AppTabBarViewState extends State<AppTabBarView> {
         SingleChildScrollView(
           child: Column(
             children: [
+              IconButton(onPressed: saveMardown, icon: Icon(Icons.save)),
               Container(
                 margin: EdgeInsets.all(20.0),
                 child: TextField(
@@ -43,15 +49,21 @@ class _AppTabBarViewState extends State<AppTabBarView> {
           ),
         ),
         SingleChildScrollView(
-          child: Container(
-            margin: EdgeInsets.all(20.0),
-            child: MarkdownBody(
-              data:
-                  markdown.length == 0 ? '# Nothing to render 🤷‍♂️' : markdown,
-              selectable: true,
-              styleSheetTheme: MarkdownStyleSheetBaseTheme.cupertino,
-              styleSheet: MarkdownStyleSheet.fromTheme(Theme.of(context)),
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                margin: EdgeInsets.all(20.0),
+                child: MarkdownBody(
+                  data: markdown.length == 0
+                      ? '# Nothing to render 🤷‍♂️'
+                      : markdown,
+                  selectable: true,
+                  styleSheetTheme: MarkdownStyleSheetBaseTheme.cupertino,
+                  styleSheet: MarkdownStyleSheet.fromTheme(Theme.of(context)),
+                ),
+              ),
+            ],
           ),
         ),
       ],
