@@ -1,5 +1,5 @@
 import 'package:app/utils/contants.dart';
-import 'package:app/widgets/app_tab_bar_view.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -7,32 +7,34 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        backgroundColor: appSecondaryColor,
-        appBar: AppBar(
-          backgroundColor: appPrimaryColor,
-          elevation: 0.0,
-          title: Text(
-            'Notes',
-            style: TextStyle(
-              color: appWhite,
-              fontWeight: FontWeight.normal,
-            ),
-          ),
-          bottom: TabBar(
-            indicatorColor: appPrimaryAccentColor,
-            unselectedLabelColor: appWhite,
-            labelColor: appPrimaryAccentColor,
-            tabs: [
-              Tab(icon: Icon(Icons.edit_outlined)),
-              Tab(icon: Icon(Icons.visibility_outlined)),
+    return Scaffold(
+      backgroundColor: appSecondaryColor,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.all(20.0),
+          physics: BouncingScrollPhysics(),
+          child: Column(
+            children: [
+              Material(
+                color: appPrimaryColor,
+                borderRadius: BorderRadius.circular(10.0),
+                child: InkWell(
+                  splashColor: appSecondaryColor,
+                  highlightColor: appPrimaryColor.withOpacity(0.5),
+                  onTap: () {},
+                  child: Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.symmetric(vertical: 60.0),
+                    child: Icon(
+                      CupertinoIcons.add_circled,
+                      color: appPrimaryAccentColor,
+                      size: 50.0,
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
-        ),
-        body: SafeArea(
-          child: AppTabBarView(),
         ),
       ),
     );
