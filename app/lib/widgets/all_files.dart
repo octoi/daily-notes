@@ -1,4 +1,7 @@
+import 'package:app/screens/edit_screen.dart';
+import 'package:app/utils/contants.dart';
 import 'package:app/utils/get_files.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AllFiles extends StatefulWidget {
@@ -26,13 +29,41 @@ class _AllFilesState extends State<AllFiles> {
   Widget build(BuildContext context) {
     return Column(
       children: files.map((file) {
-        print(file);
+        var splittedFile = file.toString().split('/');
+        var currentFile = splittedFile[splittedFile.length - 1];
+
         return Container(
-          width: double.infinity,
-          margin: EdgeInsets.symmetric(vertical: 5.0),
-          height: 100.0,
-          color: Colors.red,
+          margin: EdgeInsets.only(top: 10.0),
+          child: Material(
+            color: appPrimaryColor,
+            borderRadius: BorderRadius.circular(10.0),
+            child: InkWell(
+              splashColor: appSecondaryColor,
+              highlightColor: appPrimaryColor.withOpacity(0.5),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return EditScreen(fileName: 'sample.md');
+                  },
+                ));
+              },
+              child: Container(
+                width: double.infinity,
+                padding: EdgeInsets.symmetric(vertical: 20.0),
+                child: Center(
+                  child: Text(
+                    currentFile,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18.0,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
         );
+        ;
       }).toList(),
     );
   }
