@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class EditScreen extends StatelessWidget {
   final String title;
 
-  const EditScreen({Key? key, required this.title}) : super(key: key);
+  const EditScreen({Key? key, this.title = ''}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class EditScreen extends StatelessWidget {
           backgroundColor: appPrimaryColor,
           elevation: 0.0,
           title: Text(
-            title,
+            title.trim() == '' ? 'Untitled' : title,
             style: TextStyle(
               color: appWhite,
               fontWeight: FontWeight.normal,

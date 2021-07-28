@@ -17,7 +17,7 @@ class NewDocumentButton extends StatelessWidget {
         onTap: () {
           Navigator.push(context, MaterialPageRoute(
             builder: (BuildContext context) {
-              return EditScreen(title: 'Untitled');
+              return EditScreen();
             },
           ));
         },
