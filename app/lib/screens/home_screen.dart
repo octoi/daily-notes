@@ -1,4 +1,5 @@
 import 'package:app/utils/contants.dart';
+import 'package:app/widgets/all_files.dart';
 import 'package:app/widgets/new_document_btn.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +17,7 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             children: [
               NewDocumentButton(),
+              AllFiles(),
             ],
           ),
         ),
