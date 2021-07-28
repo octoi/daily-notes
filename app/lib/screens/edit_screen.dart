@@ -1,11 +1,15 @@
+import 'package:app/screens/home_screen.dart';
 import 'package:app/utils/contants.dart';
 import 'package:app/widgets/app_tab_bar_view.dart';
 import 'package:flutter/material.dart';
 
 class EditScreen extends StatelessWidget {
-  final String title;
+  final String fileName;
 
-  const EditScreen({Key? key, required this.title}) : super(key: key);
+  const EditScreen({
+    Key? key,
+    this.fileName = '',
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +21,21 @@ class EditScreen extends StatelessWidget {
           backgroundColor: appPrimaryColor,
           elevation: 0.0,
           title: Text(
-            title,
+            fileName.trim() == '' ? 'Untitled' : fileName,
             style: TextStyle(
               color: appWhite,
               fontWeight: FontWeight.normal,
             ),
+          ),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pushReplacement(context, MaterialPageRoute(
+                builder: (BuildContext context) {
+                  return HomeScreen();
+                },
+              ));
+            },
+            icon: Icon(Icons.arrow_back_ios),
           ),
           bottom: TabBar(
             indicatorColor: appPrimaryAccentColor,
@@ -34,7 +48,7 @@ class EditScreen extends StatelessWidget {
           ),
         ),
         body: SafeArea(
-          child: AppTabBarView(),
+          child: AppTabBarView(fileName: fileName),
         ),
       ),
     );

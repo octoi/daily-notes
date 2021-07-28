@@ -3,14 +3,19 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-String content = '';
+List allFiles = [];
 
-Future<String> readFile(String filename) async {
-  await readFileFromPath(filename);
-  return content;
+Future<List> getAllFiles() async {
+  try {
+    await readFileFromPath();
+  } catch (err) {
+    print(err);
+    allFiles = [];
+  }
+  return allFiles;
 }
 
-Future<bool> readFileFromPath(String filename) async {
+Future<bool> readFileFromPath() async {
   var directory;
   try {
     if (await _requestPermission(Permission.storage)) {
@@ -30,8 +35,7 @@ Future<bool> readFileFromPath(String filename) async {
       newPath = newPath + "/dailynotes";
       directory = Directory(newPath);
 
-      File file = File(directory.path + '/$filename');
-      content = await file.readAsString();
+      allFiles = directory.listSync();
 
       if (!await directory.exists()) {
         await directory.create(recursive: true);

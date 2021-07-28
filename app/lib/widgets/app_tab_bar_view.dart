@@ -5,7 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
 class AppTabBarView extends StatefulWidget {
-  const AppTabBarView({Key? key}) : super(key: key);
+  final String fileName;
+  const AppTabBarView({
+    Key? key,
+    this.fileName = '',
+  }) : super(key: key);
 
   @override
   _AppTabBarViewState createState() => _AppTabBarViewState();
@@ -15,12 +19,21 @@ class _AppTabBarViewState extends State<AppTabBarView> {
   TextEditingController _textEditingController = TextEditingController();
   String markdown = '';
 
+  @override
+  void initState() {
+    super.initState();
+    if (widget.fileName != '') {
+      readMardown();
+    }
+  }
+
   void saveMardown() async {
-    await saveFile("sample", markdown);
+    String newFileName = widget.fileName == '' ? 'untitled' : widget.fileName;
+    await saveFile(newFileName, markdown);
   }
 
   void readMardown() async {
-    String content = await readFile("sample");
+    String content = await readFile(widget.fileName);
     _textEditingController.text = content;
     setState(() => markdown = content);
   }
@@ -35,7 +48,7 @@ class _AppTabBarViewState extends State<AppTabBarView> {
               Row(
                 children: [
                   IconButton(onPressed: saveMardown, icon: Icon(Icons.save)),
-                  IconButton(onPressed: readMardown, icon: Icon(Icons.book)),
+                  // IconButton(onPressed: readMardown, icon: Icon(Icons.book)),
                 ],
               ),
               Container(
