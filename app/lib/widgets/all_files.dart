@@ -28,44 +28,63 @@ class _AllFilesState extends State<AllFiles> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: files.map((file) {
-        var splittedFile = file.toString().split('/');
-        var currentFile = splittedFile[splittedFile.length - 1];
-        currentFile = currentFile.substring(0, currentFile.length - 1);
+      children: [
+        SizedBox(height: 20.0),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "All Files",
+              style: TextStyle(color: Colors.white, fontSize: 18.0),
+            ),
+            IconButton(
+              onPressed: getFiles,
+              icon: Icon(Icons.refresh),
+            ),
+          ],
+        ),
+        SizedBox(height: 10.0),
+        Column(
+          children: files.map((file) {
+            var splittedFile = file.toString().split('/');
+            var currentFile = splittedFile[splittedFile.length - 1];
+            currentFile = currentFile.substring(0, currentFile.length - 1);
 
-        return Container(
-          margin: EdgeInsets.only(top: 10.0),
-          child: Material(
-            color: appPrimaryColor,
-            borderRadius: BorderRadius.circular(10.0),
-            child: InkWell(
-              splashColor: appSecondaryColor,
-              highlightColor: appPrimaryColor.withOpacity(0.5),
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (BuildContext context) {
-                    return EditScreen(fileName: currentFile);
+            return Container(
+              margin: EdgeInsets.only(top: 10.0),
+              child: Material(
+                color: appPrimaryColor,
+                borderRadius: BorderRadius.circular(10.0),
+                child: InkWell(
+                  splashColor: appSecondaryColor,
+                  highlightColor: appPrimaryColor.withOpacity(0.5),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return EditScreen(fileName: currentFile);
+                      },
+                    ));
                   },
-                ));
-              },
-              child: Container(
-                width: double.infinity,
-                padding: EdgeInsets.symmetric(vertical: 20.0),
-                child: Center(
-                  child: Text(
-                    currentFile,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18.0,
+                  child: Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.symmetric(vertical: 20.0),
+                    child: Center(
+                      child: Text(
+                        currentFile,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18.0,
+                        ),
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ),
-        );
-        ;
-      }).toList(),
+            );
+            ;
+          }).toList(),
+        ),
+      ],
     );
   }
 }

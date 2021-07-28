@@ -28,13 +28,7 @@ class EditScreen extends StatelessWidget {
             ),
           ),
           leading: IconButton(
-            onPressed: () {
-              Navigator.pushReplacement(context, MaterialPageRoute(
-                builder: (BuildContext context) {
-                  return HomeScreen();
-                },
-              ));
-            },
+            onPressed: () => Navigator.pop(context),
             icon: Icon(Icons.arrow_back_ios),
           ),
           bottom: TabBar(
