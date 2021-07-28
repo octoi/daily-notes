@@ -31,6 +31,7 @@ class _AllFilesState extends State<AllFiles> {
       children: files.map((file) {
         var splittedFile = file.toString().split('/');
         var currentFile = splittedFile[splittedFile.length - 1];
+        currentFile = currentFile.substring(0, currentFile.length - 1);
 
         return Container(
           margin: EdgeInsets.only(top: 10.0),
@@ -43,7 +44,7 @@ class _AllFilesState extends State<AllFiles> {
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(
                   builder: (BuildContext context) {
-                    return EditScreen(fileName: 'sample.md');
+                    return EditScreen(fileName: currentFile);
                   },
                 ));
               },

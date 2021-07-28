@@ -28,7 +28,8 @@ class _AppTabBarViewState extends State<AppTabBarView> {
   }
 
   void saveMardown() async {
-    await saveFile(widget.fileName, markdown);
+    String newFileName = widget.fileName == '' ? 'untitled' : widget.fileName;
+    await saveFile(newFileName, markdown);
   }
 
   void readMardown() async {
