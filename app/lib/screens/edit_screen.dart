@@ -1,3 +1,4 @@
+import 'package:app/screens/home_screen.dart';
 import 'package:app/utils/contants.dart';
 import 'package:app/widgets/app_tab_bar_view.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,16 @@ class EditScreen extends StatelessWidget {
               fontWeight: FontWeight.normal,
             ),
           ),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pushReplacement(context, MaterialPageRoute(
+                builder: (BuildContext context) {
+                  return HomeScreen();
+                },
+              ));
+            },
+            icon: Icon(Icons.arrow_back_ios),
+          ),
           bottom: TabBar(
             indicatorColor: appPrimaryAccentColor,
             unselectedLabelColor: appWhite,
@@ -37,7 +48,7 @@ class EditScreen extends StatelessWidget {
           ),
         ),
         body: SafeArea(
-          child: AppTabBarView(),
+          child: AppTabBarView(fileName: fileName),
         ),
       ),
     );
