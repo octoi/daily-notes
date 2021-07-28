@@ -30,7 +30,7 @@ Future<bool> readFileFromPath(String filename) async {
       newPath = newPath + "/dailynotes";
       directory = Directory(newPath);
 
-      File file = File(directory.path + '/$filename.md');
+      File file = File(directory.path + '/$filename');
       content = await file.readAsString();
 
       if (!await directory.exists()) {
